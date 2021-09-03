@@ -1,0 +1,11 @@
+server {
+  listen 8080;
+
+  location / {
+    proxy_set_header Authorization "";
+    proxy_pass ${HOST};
+    proxy_ssl_verify off;
+    proxy_ssl_server_name on;
+  }
+}
+

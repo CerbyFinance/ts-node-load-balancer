@@ -4,12 +4,170 @@ services:
   moralis-ropsten:
     image: nginx
     volumes:
-      - ./moralis-ropsten.conf:/etc/nginx/nginx.conf
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/ropsten
 
   moralis-ropsten-archive:
     image: nginx
     volumes:
-      - ./moralis-ropsten-archive.conf:/etc/nginx/nginx.conf
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/ropsten/archive
+
+  infura-ropsten:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://ropsten.infura.io/v3/e1e3689e3d834d5eb4ec3d95eb4dda50
+
+  alchemy-ropsten:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://eth-ropsten.alchemyapi.io/v2/cuiLW88_OqWfH5yvzhEXVHt9xdZN9IpK
+
+  # ----------
+
+  moralis-kovan:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/kovan
+
+  moralis-kovan-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/kovan/archive
+
+  infura-kovan:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://kovan.infura.io/v3/e1e3689e3d834d5eb4ec3d95eb4dda50
+
+  alchemy-kovan:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://eth-kovan.alchemyapi.io/v2/T-HrWz2nVQ8FIQ5227T0bfUTeO7UjZC5
+
+  # ----------
+
+  moralis-mainnet:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/mainnet
+
+  moralis-mainnet-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/eth/mainnet/archive
+
+  infura-mainnet:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://mainnet.infura.io/v3/e1e3689e3d834d5eb4ec3d95eb4dda50
+
+  alchemy-mainnet:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
+
+  # ----------
+
+  moralis-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet
+
+  moralis-binance-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet/archive
+
+  # ----------
+
+  moralis-binance-testnet:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/testnet
+
+  moralis-binance-testnet-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/testnet/archive
+
+  # ----------
+
+  moralis-polygon:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet
+
+  moralis-polygon-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet/archive
+
+  alchemy-polygon:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://polygon-mainnet.g.alchemy.com/v2/YW8khK4qms8RrrfKMfdKennC3_DsLdV3
+
+  # ----------
+
+  moralis-polygon-mumbai:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mumbai
+
+  moralis-polygon-mumbai-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mumbai/archive
+
+  alchemy-polygon-mumbai:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://polygon-mumbai.g.alchemy.com/v2/VbZ3Eaoud1snZdOP9nhqGvniVw09EznN
+
+  # ----------
 
   load-balancer:
     image: nginx
@@ -17,8 +175,28 @@ services:
       - ./load-balancer.conf:/etc/nginx/nginx.conf
     ports:
       - "3333:8080"
-    deploy:
-      replicas: 1
     depends_on:
       - moralis-ropsten
       - moralis-ropsten-archive
+      - infura-ropsten
+      - alchemy-ropsten
+      - moralis-kovan
+      - moralis-kovan-archive
+      - infura-kovan
+      - alchemy-kovan
+      - moralis-mainnet
+      - moralis-mainnet-archive
+      - infura-mainnet
+      - alchemy-mainnet
+      - moralis-binance
+      - moralis-binance-archive
+      - moralis-binance-testnet
+      - moralis-binance-testnet-archive
+      - moralis-polygon
+      - moralis-polygon-archive
+      - alchemy-polygon
+      - moralis-polygon-mumbai
+      - moralis-polygon-mumbai-archive
+      - alchemy-polygon-mumbai
+    deploy:
+      replicas: 1
