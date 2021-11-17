@@ -128,19 +128,19 @@ services:
   #     - HOST=https://bsc-dataseed4.ninicoin.io
 
 
-  # moralis-binance:
-  #   image: nginx
-  #   volumes:
-  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
-  #   environment:
-  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet
+  moralis-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet
 
-  # moralis-binance-archive:
-  #   image: nginx
-  #   volumes:
-  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
-  #   environment:
-  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet/archive
+  moralis-binance-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet/archive
 
   # ----------
 
@@ -225,13 +225,13 @@ services:
       - moralis-mainnet-archive
       - infura-mainnet
       - alchemy-mainnet
+      - moralis-binance
+      - moralis-binance-archive
       - dataseed-binance
       - dataseed-binance-1
       - dataseed-binance-1-2
       # - dataseed-binance-3
       # - dataseed-binance-4
-      # - moralis-binance
-      # - moralis-binance-archive
       - moralis-binance-testnet
       - moralis-binance-testnet-archive
       - moralis-polygon
