@@ -202,8 +202,10 @@ services:
       - moralis-mainnet-archive
       - infura-mainnet
       - alchemy-mainnet
-      - moralis-binance
-      - moralis-binance-archive
+      - dataseed-binance-3
+      - dataseed-binance-4
+      # - moralis-binance
+      # - moralis-binance-archive
       - moralis-binance-testnet
       - moralis-binance-testnet-archive
       - moralis-polygon
