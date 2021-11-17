@@ -90,19 +90,42 @@ services:
       - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
 
   # ----------
-  dataseed-binance-3:
+  dataseed-binance:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://bsc-dataseed3.defibit.io
+      - HOST=https://bsc-dataseed.binance.org
 
-  dataseed-binance-4:
+
+  dataseed-binance-1:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://bsc-dataseed4.ninicoin.io
+      - HOST=https://bsc-dataseed1.ninicoin.io
+
+  dataseed-binance-1-2:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://bsc-dataseed1.defibit.io
+
+  
+  # dataseed-binance-3:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed3.defibit.io
+
+  # dataseed-binance-4:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed4.ninicoin.io
 
 
   # moralis-binance:
@@ -202,8 +225,11 @@ services:
       - moralis-mainnet-archive
       - infura-mainnet
       - alchemy-mainnet
-      - dataseed-binance-3
-      - dataseed-binance-4
+      - dataseed-binance
+      - dataseed-binance-1
+      - dataseed-binance-1-2
+      # - dataseed-binance-3
+      # - dataseed-binance-4
       # - moralis-binance
       # - moralis-binance-archive
       - moralis-binance-testnet
