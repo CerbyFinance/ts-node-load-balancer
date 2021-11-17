@@ -90,20 +90,34 @@ services:
       - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
 
   # ----------
-
-  moralis-binance:
+  dataseed-binance-3:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet
+      - HOST=https://bsc-dataseed3.defibit.io
 
-  moralis-binance-archive:
+  dataseed-binance-4:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet/archive
+      - HOST=https://bsc-dataseed4.ninicoin.io
+
+
+  # moralis-binance:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet
+
+  # moralis-binance-archive:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/bsc/mainnet/archive
 
   # ----------
 
