@@ -90,35 +90,35 @@ services:
       - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
 
   # ----------
-  # dataseed-binance:
+  dataseed-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://bsc-dataseed1.defibit.io
+
+  # moralis-binance:
   #   image: nginx
   #   volumes:
   #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
   #   environment:
-  #     - HOST=https://bsc-dataseed.binance.org
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet
 
-  moralis-binance:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet
+  # moralis-binance-archive:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet/archive
 
-  moralis-binance-archive:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet/archive
-
-  dataseed-binance-3:
+  dataseed-binance-2:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
       - HOST=https://bsc-dataseed3.defibit.io
 
-  dataseed-binance-4:
+  dataseed-binance-3:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
@@ -283,12 +283,12 @@ services:
       - moralis-mainnet-archive
       - infura-mainnet
       - alchemy-mainnet
-      - moralis-binance
-      - moralis-binance-archive
+      # - moralis-binance
+      # - moralis-binance-archive
+      - dataseed-binance
+      - dataseed-binance-2
       - dataseed-binance-3
-      - dataseed-binance-4
 
-      # - dataseed-binance
       # - infstones-binance
       # - infstones-binance-2
       # - infstones-binance-3
@@ -296,8 +296,6 @@ services:
       # - infstones-binance-archive-2
       # - infstones-binance-archive-3
  
-      # - dataseed-binance-3
-      # - dataseed-binance-4
       # - dataseed-binance-1
       # - dataseed-binance-1-2
   
