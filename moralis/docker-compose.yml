@@ -97,35 +97,41 @@ services:
   #   environment:
   #     - HOST=https://bsc-dataseed.binance.org
 
-
-  dataseed-binance-1:
+  infstones-binance:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://bsc-dataseed1.ninicoin.io
+      - HOST=https://api.infstones.io/bsc/mainnet/55e7b4e722594da9ac6f65bfc5d78e51
 
-  dataseed-binance-1-2:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://bsc-dataseed1.defibit.io
+  # dataseed-binance-1:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed1.ninicoin.io
+
+  # dataseed-binance-1-2:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed1.defibit.io
 
   
-  dataseed-binance-3:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://bsc-dataseed3.defibit.io
+  # dataseed-binance-3:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed3.defibit.io
 
-  dataseed-binance-4:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://bsc-dataseed4.ninicoin.io
+  # dataseed-binance-4:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://bsc-dataseed4.ninicoin.io
 
 
   # moralis-binance:
@@ -228,10 +234,11 @@ services:
       # - moralis-binance
       # - moralis-binance-archive
       # - dataseed-binance
-      - dataseed-binance-3
-      - dataseed-binance-4
-      - dataseed-binance-1
-      - dataseed-binance-1-2
+      - infstones-binance
+      # - dataseed-binance-3
+      # - dataseed-binance-4
+      # - dataseed-binance-1
+      # - dataseed-binance-1-2
   
       - moralis-binance-testnet
       - moralis-binance-testnet-archive
