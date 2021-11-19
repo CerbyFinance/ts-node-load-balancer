@@ -98,26 +98,47 @@ services:
   #     - HOST=https://bsc-dataseed.binance.org
 
 
+  infstones-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://api.infstones.io/bsc/mainnet/4da2819f44164c9aa380776f54916e18
+
+  infstones-binance-2:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://api.infstones.io/bsc/mainnet/4bec45c91f9c45b18f3c1374c712f3d8
+
+  infstones-binance-3:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://api.infstones.io/bsc/mainnet/86a9159d4af94251b7dd76a4bc4783a2
+
   infstones-binance-archive:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc-archive/mainnet/668ed25144834d5fa067a905026149fe
+      - HOST=https://api.infstones.io/bsc-archive/mainnet/e9be5e2a5eb14432b7452dafaaa0cc8b
 
   infstones-binance-archive-2:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc-archive/mainnet/c6102657aad4451f9ef5123c5e4e24ea
+      - HOST=https://api.infstones.io/bsc-archive/mainnet/e45486f13c42414c862bb350e5c3ea58
 
-  infstones-binance:
+  infstones-binance-archive-3:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc/mainnet/bcdcd3060ec0446ea9696c2f461b23e8
+      - HOST=https://api.infstones.io/bsc-archive/mainnet/4de36d988da7464da946a3042b71a5ed
 
   # dataseed-binance-1:
   #   image: nginx
@@ -249,9 +270,13 @@ services:
       # - moralis-binance
       # - moralis-binance-archive
       # - dataseed-binance
+      - infstones-binance
+      - infstones-binance-2
+      - infstones-binance-3
       - infstones-binance-archive
       - infstones-binance-archive-2
-      - infstones-binance
+      - infstones-binance-archive-3
+ 
       # - dataseed-binance-3
       # - dataseed-binance-4
       # - dataseed-binance-1
