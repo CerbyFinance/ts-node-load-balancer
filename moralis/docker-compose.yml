@@ -97,48 +97,76 @@ services:
   #   environment:
   #     - HOST=https://bsc-dataseed.binance.org
 
-
-  infstones-binance:
+  moralis-binance:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc/mainnet/4da2819f44164c9aa380776f54916e18
+      - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet
 
-  infstones-binance-2:
+  moralis-binance-archive:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc/mainnet/4bec45c91f9c45b18f3c1374c712f3d8
+      - HOST=https://speedy-nodes-nyc.moralis.io/51dec98def94affe31779e74/bsc/mainnet/archive
 
-  infstones-binance-3:
+  dataseed-binance-3:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc/mainnet/86a9159d4af94251b7dd76a4bc4783a2
+      - HOST=https://bsc-dataseed3.defibit.io
 
-  infstones-binance-archive:
+  dataseed-binance-4:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc-archive/mainnet/e9be5e2a5eb14432b7452dafaaa0cc8b
+      - HOST=https://bsc-dataseed4.ninicoin.io
 
-  infstones-binance-archive-2:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://api.infstones.io/bsc-archive/mainnet/e45486f13c42414c862bb350e5c3ea58
 
-  infstones-binance-archive-3:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://api.infstones.io/bsc-archive/mainnet/4de36d988da7464da946a3042b71a5ed
+  # infstones-binance:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc/mainnet/4da2819f44164c9aa380776f54916e18
+
+  # infstones-binance-2:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc/mainnet/4bec45c91f9c45b18f3c1374c712f3d8
+
+  # infstones-binance-3:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc/mainnet/86a9159d4af94251b7dd76a4bc4783a2
+
+  # infstones-binance-archive:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc-archive/mainnet/e9be5e2a5eb14432b7452dafaaa0cc8b
+
+  # infstones-binance-archive-2:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc-archive/mainnet/e45486f13c42414c862bb350e5c3ea58
+
+  # infstones-binance-archive-3:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.infstones.io/bsc-archive/mainnet/4de36d988da7464da946a3042b71a5ed
 
   # dataseed-binance-1:
   #   image: nginx
@@ -155,19 +183,7 @@ services:
   #     - HOST=https://bsc-dataseed1.defibit.io
 
   
-  # dataseed-binance-3:
-  #   image: nginx
-  #   volumes:
-  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
-  #   environment:
-  #     - HOST=https://bsc-dataseed3.defibit.io
 
-  # dataseed-binance-4:
-  #   image: nginx
-  #   volumes:
-  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
-  #   environment:
-  #     - HOST=https://bsc-dataseed4.ninicoin.io
 
 
   # moralis-binance:
@@ -267,15 +283,18 @@ services:
       - moralis-mainnet-archive
       - infura-mainnet
       - alchemy-mainnet
-      # - moralis-binance
-      # - moralis-binance-archive
+      - moralis-binance
+      - moralis-binance-archive
+      - dataseed-binance-3
+      - dataseed-binance-4
+
       # - dataseed-binance
-      - infstones-binance
-      - infstones-binance-2
-      - infstones-binance-3
-      - infstones-binance-archive
-      - infstones-binance-archive-2
-      - infstones-binance-archive-3
+      # - infstones-binance
+      # - infstones-binance-2
+      # - infstones-binance-3
+      # - infstones-binance-archive
+      # - infstones-binance-archive-2
+      # - infstones-binance-archive-3
  
       # - dataseed-binance-3
       # - dataseed-binance-4
