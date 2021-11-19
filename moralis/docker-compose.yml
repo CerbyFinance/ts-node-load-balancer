@@ -97,12 +97,20 @@ services:
   #   environment:
   #     - HOST=https://bsc-dataseed.binance.org
 
+
+  infstones-binance-archive:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://api.infstones.io/bsc-archive/mainnet/bb74977313ca43eea73d45c61f31e482
+
   infstones-binance:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.infstones.io/bsc/mainnet/55e7b4e722594da9ac6f65bfc5d78e51
+      - HOST=https://api.infstones.io/bsc/mainnet/015fd2fc06aa40a0925a6d067e6fd089
 
   # dataseed-binance-1:
   #   image: nginx
@@ -234,6 +242,7 @@ services:
       # - moralis-binance
       # - moralis-binance-archive
       # - dataseed-binance
+      - infstones-binance-archive
       - infstones-binance
       # - dataseed-binance-3
       # - dataseed-binance-4
