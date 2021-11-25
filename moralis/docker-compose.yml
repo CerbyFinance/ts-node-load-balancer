@@ -304,6 +304,9 @@ services:
       - dataseed-binance-2
       - dataseed-binance-3
 
+      - moralis-fantom
+      - moralis-avalanche
+
       # - infstones-binance
       # - infstones-binance-2
       # - infstones-binance-3
