@@ -97,6 +97,21 @@ services:
     environment:
       - HOST=https://bsc-dataseed1.defibit.io
 
+  # ----------
+  moralis-fantom:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/fantom/mainnet
+
+  moralis-avalanche:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/avalanche/mainnet
+
   # moralis-binance:
   #   image: nginx
   #   volumes:
