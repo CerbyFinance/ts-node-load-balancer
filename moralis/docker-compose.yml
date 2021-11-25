@@ -105,12 +105,26 @@ services:
     environment:
       - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/fantom/mainnet
 
+  rpc-fantom:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://rpc.ftm.tools
+
   moralis-avalanche:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
       - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/avalanche/mainnet
+
+  rpc-avalanche:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://api.avax.network/ext/bc/C/rpc
 
   # moralis-binance:
   #   image: nginx
@@ -305,7 +319,10 @@ services:
       - dataseed-binance-3
 
       - moralis-fantom
+      - rpc-fantom
       - moralis-avalanche
+      - rpc-avalanche
+
 
       # - infstones-binance
       # - infstones-binance-2
