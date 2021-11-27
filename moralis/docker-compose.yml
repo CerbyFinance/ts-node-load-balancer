@@ -90,14 +90,6 @@ services:
       - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
 
   # ----------
-  dataseed-binance:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://bsc-dataseed1.defibit.io
-
-  # ----------
   moralis-fantom:
     image: nginx
     volumes:
@@ -125,6 +117,21 @@ services:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
       - HOST=https://api.avax.network/ext/bc/C/rpc
+
+  # ----------
+  dataseed-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://bsc-dataseed1.defibit.io
+
+  bsc-rpc:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=https://BSCRPC.com
 
   # moralis-binance:
   #   image: nginx
@@ -314,6 +321,7 @@ services:
       - alchemy-mainnet
       # - moralis-binance
       # - moralis-binance-archive
+      - bsc-rpc
       - dataseed-binance
       - dataseed-binance-2
       - dataseed-binance-3
