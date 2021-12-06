@@ -254,19 +254,34 @@ services:
 
   # ----------
 
-  moralis-polygon:
+  rpc-polygon:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet
+      - HOST=https://polygon-rpc.com
 
-  moralis-polygon-archive:
+  matic-vigil-polygon:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet/archive
+      - HOST=https://rpc-mainnet.maticvigil.com
+
+
+  # moralis-polygon:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet
+
+  # moralis-polygon-archive:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://speedy-nodes-nyc.moralis.io/8113f2a7f4c35932eeec0c0d/polygon/mainnet/archive
 
   alchemy-polygon:
     image: nginx
@@ -344,8 +359,8 @@ services:
   
       - moralis-binance-testnet
       - moralis-binance-testnet-archive
-      - moralis-polygon
-      - moralis-polygon-archive
+      - rpc-polygon
+      - matic-vigil-polygon
       - alchemy-polygon
       - moralis-polygon-mumbai
       - moralis-polygon-mumbai-archive
