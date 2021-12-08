@@ -261,14 +261,6 @@ services:
     environment:
       - HOST=https://polygon-rpc.com
 
-  matic-vigil-polygon:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://rpc-mainnet.maticvigil.com
-
-
   # moralis-polygon:
   #   image: nginx
   #   volumes:
@@ -360,7 +352,6 @@ services:
       - moralis-binance-testnet
       - moralis-binance-testnet-archive
       - rpc-polygon
-      - matic-vigil-polygon
       - alchemy-polygon
       - moralis-polygon-mumbai
       - moralis-polygon-mumbai-archive
