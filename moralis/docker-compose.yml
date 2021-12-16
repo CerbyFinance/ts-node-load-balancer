@@ -24,6 +24,15 @@ services:
 
   # ----------
 
+
+  moralis-mainnet:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=http://balancer:3030/@token/eth/mainnet
+
+
   alchemy-mainnet:
     image: nginx
     volumes:
@@ -54,6 +63,15 @@ services:
     environment:
       - HOST=https://rpc.ftm.tools
 
+
+  moralis-avalanche:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=http://balancer:3030/@token/avalanche/mainnet
+
+
   rpc-avalanche:
     image: nginx
     volumes:
@@ -76,6 +94,12 @@ services:
     environment:
       - HOST=https://BSCRPC.com
 
+  moralis-binance:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=http://balancer:3030/@token/bsc/mainnet
 
   dataseed-binance-2:
     image: nginx
@@ -214,17 +238,20 @@ services:
       - infura-ropsten
       - infura-kovan
 
+      - moralis-mainnet
       - alchemy-mainnet
       - infura-mainnet
       - infura-mainnet-2
 
       - bsc-rpc
+      - moralis-binance
       - dataseed-binance
       - dataseed-binance-2
       - dataseed-binance-3
 
       - rpc-fantom
       - rpc-avalanche
+      - moralis-avalanche
 
 
       # - infstones-binance
