@@ -1,6 +1,11 @@
 version: "3.2"
 
 services:
+  balancer:
+    image: go-balancer
+    volumes:
+       - ./tokens.txt:/root/tokens.txt
+
   infura-ropsten:
     image: nginx
     volumes:
@@ -156,6 +161,14 @@ services:
 
   # ----------
 
+  moralis-polygon:
+    image: nginx
+    volumes:
+      - ./server.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - HOST=http://go-balancer:3030/$token/polygon/mainnet
+
+
   rpc-polygon:
     image: nginx
     volumes:
@@ -196,6 +209,8 @@ services:
     ports:
       - "3333:8080"
     depends_on:
+      - go-balancer
+
       - infura-ropsten
       - infura-kovan
 
@@ -224,6 +239,7 @@ services:
   
       - binance-testnet
 
+      - moralis-polygon
       - rpc-polygon
       - alchemy-polygon
 
