@@ -209,7 +209,7 @@ services:
     ports:
       - "3333:8080"
     depends_on:
-      - go-balancer
+      - balancer
 
       - infura-ropsten
       - infura-kovan
