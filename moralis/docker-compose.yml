@@ -166,7 +166,7 @@ services:
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=http://balancer:3030/$token/polygon/mainnet
+      - HOST=http://balancer:3030/@token/polygon/mainnet
 
 
   rpc-polygon:

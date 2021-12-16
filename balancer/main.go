@@ -154,7 +154,7 @@ func buildBalance(host string) func(w http.ResponseWriter, r *http.Request) {
 
 var tokens []string
 var proxyMap = make(map[string]*Proxy)
-var reToken = regexp.MustCompile(`(\$token)`)
+var reToken = regexp.MustCompile(`(\@token)`)
 
 func main() {
 	port := 3030
