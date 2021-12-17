@@ -33,26 +33,12 @@ services:
       - HOST=http://balancer:3030/@token/eth/mainnet
 
 
-  alchemy-mainnet:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
-
-  infura-mainnet:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://mainnet.infura.io/v3/e1e3689e3d834d5eb4ec3d95eb4dda50
-
-  infura-mainnet-2:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+  # alchemy-mainnet:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://eth-mainnet.alchemyapi.io/v2/xWjz3Gf53QIWM80eqYkYWXFAeGU3uU1R
 
   # ----------
 
@@ -239,9 +225,8 @@ services:
       - infura-kovan
 
       - moralis-mainnet
-      - alchemy-mainnet
-      - infura-mainnet
-      - infura-mainnet-2
+      # - alchemy-mainnet
+      # - infura-mainnet
 
       - bsc-rpc
       - moralis-binance
