@@ -73,12 +73,12 @@ services:
     environment:
       - HOST=https://bsc-dataseed1.defibit.io
 
-  bsc-rpc:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=https://BSCRPC.com
+  # bsc-rpc:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://BSCRPC.com
 
   moralis-binance:
     image: nginx
@@ -228,7 +228,7 @@ services:
       # - alchemy-mainnet
       # - infura-mainnet
 
-      - bsc-rpc
+      # - bsc-rpc
       - moralis-binance
       - dataseed-binance
       - dataseed-binance-2
