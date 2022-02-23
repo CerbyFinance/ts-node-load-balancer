@@ -5,12 +5,14 @@ import (
 	"crypto/tls"
 	"fmt"
 	"log"
+	"math/rand"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
 	"os"
 	"regexp"
+	"strconv"
 	"sync"
 	"time"
 )
@@ -95,7 +97,11 @@ func createProxy(path string) *Proxy {
 
 	proxy := httputil.NewSingleHostReverseProxy(serverUrl)
 
-	proxyUrl, _ := url.Parse("http://kvAAPU:meavB6@45.145.57.200:11676/")
+	min := 10001
+	max := 12500
+	port := rand.Intn(max-min) + min
+
+	proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
 	proxy.Transport = &http.Transport{
 		Proxy: http.ProxyURL(proxyUrl),
 		DialContext: (&net.Dialer{
