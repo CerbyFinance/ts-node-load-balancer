@@ -95,7 +95,9 @@ func createProxy(path string) *Proxy {
 
 	proxy := httputil.NewSingleHostReverseProxy(serverUrl)
 
+	proxyUrl, _ := url.Parse("http://kvAAPU:meavB6@45.145.57.200:11676/")
 	proxy.Transport = &http.Transport{
+		Proxy: http.ProxyURL(proxyUrl),
 		DialContext: (&net.Dialer{
 			Timeout:   30 * time.Second,
 			KeepAlive: 30 * time.Second,
