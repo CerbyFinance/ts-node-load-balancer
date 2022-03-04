@@ -13,6 +13,7 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -102,6 +103,11 @@ func createProxy(path string) *Proxy {
 	port := rand.Intn(max-min) + min
 
 	proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
+
+	if strings.Contains(path, "eth/mainnet") {
+		proxyUrl = nil
+	}
+
 	proxy.Transport = &http.Transport{
 		Proxy: http.ProxyURL(proxyUrl),
 		DialContext: (&net.Dialer{
