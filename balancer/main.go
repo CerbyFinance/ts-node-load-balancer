@@ -90,11 +90,11 @@ func dialTLS(network, addr string) (net.Conn, error) {
 }
 
 var proxies []string = []string{
-	"RhbxQP:uEc4dA@104.238.190.248:10296",
-	"52qqy7:wX1MNS@85.195.81.143:10122",
-	"Uy8j3T:KJWZB2@45.145.57.228:11693",
-	"tUEGX8:bRXzV4@45.91.209.140:10484",
-	"dh3Ngq:q7BYyD@45.153.20.207:10487",
+	"http://RhbxQP:uEc4dA@104.238.190.248:10296",
+	"http://52qqy7:wX1MNS@85.195.81.143:10122",
+	"http://Uy8j3T:KJWZB2@45.145.57.228:11693",
+	"http://tUEGX8:bRXzV4@45.91.209.140:10484",
+	"http://dh3Ngq:q7BYyD@45.153.20.207:10487",
 }
 
 func createProxy(path string) *Proxy {
