@@ -12,8 +12,6 @@ import (
 	"net/url"
 	"os"
 	"regexp"
-	"strconv"
-	"strings"
 	"sync"
 	"time"
 )
@@ -91,6 +89,17 @@ func dialTLS(network, addr string) (net.Conn, error) {
 	return tlsConn, nil
 }
 
+var proxies []string = []string{
+	"HwufNd:8qBT3L@45.32.56.105:10609",
+	"55LL0X:xLS1PL@45.32.117.124:10345",
+	"MT2Yym:68DJDP@149.28.161.95:12027",
+	"RhbxQP:uEc4dA@104.238.190.248:10296",
+	"52qqy7:wX1MNS@85.195.81.143:10122",
+	"Uy8j3T:KJWZB2@45.145.57.228:11693",
+	"tUEGX8:bRXzV4@45.91.209.140:10484",
+	"dh3Ngq:q7BYyD@45.153.20.207:10487",
+}
+
 func createProxy(path string) *Proxy {
 	serverUrl, _ := url.Parse(path)
 
@@ -98,15 +107,19 @@ func createProxy(path string) *Proxy {
 
 	proxy := httputil.NewSingleHostReverseProxy(serverUrl)
 
-	min := 10001
-	max := 12500
-	port := rand.Intn(max-min) + min
+	// min := 10001
+	// max := 12500
+	// port := rand.Intn(max-min) + min
 
-	proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
+	proxyId := rand.Intn(len(proxies))
+	proxyStr := proxies[proxyId]
 
-	if strings.Contains(path, "eth/mainnet") {
-		proxyUrl = nil
-	}
+	// proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
+	proxyUrl, _ := url.Parse(proxyStr)
+
+	// if strings.Contains(path, "eth/mainnet") {
+	// 	proxyUrl = nil
+	// }
 
 	proxy.Transport = &http.Transport{
 		Proxy: http.ProxyURL(proxyUrl),
