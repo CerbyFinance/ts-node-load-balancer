@@ -90,9 +90,6 @@ func dialTLS(network, addr string) (net.Conn, error) {
 }
 
 var proxies []string = []string{
-	"HwufNd:8qBT3L@45.32.56.105:10609",
-	"55LL0X:xLS1PL@45.32.117.124:10345",
-	"MT2Yym:68DJDP@149.28.161.95:12027",
 	"RhbxQP:uEc4dA@104.238.190.248:10296",
 	"52qqy7:wX1MNS@85.195.81.143:10122",
 	"Uy8j3T:KJWZB2@45.145.57.228:11693",
