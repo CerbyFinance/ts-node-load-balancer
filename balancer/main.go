@@ -12,6 +12,8 @@ import (
 	"net/url"
 	"os"
 	"regexp"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -104,19 +106,19 @@ func createProxy(path string) *Proxy {
 
 	proxy := httputil.NewSingleHostReverseProxy(serverUrl)
 
-	// min := 10001
-	// max := 12500
-	// port := rand.Intn(max-min) + min
+	min := 10001
+	max := 12500
+	port := rand.Intn(max-min) + min
 
-	proxyId := rand.Intn(len(proxies))
-	proxyStr := proxies[proxyId]
+	// proxyId := rand.Intn(len(proxies))
+	// proxyStr := proxies[proxyId]
 
-	// proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
-	proxyUrl, _ := url.Parse(proxyStr)
+	proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
+	// proxyUrl, _ := url.Parse(proxyStr)
 
-	// if strings.Contains(path, "eth/mainnet") {
-	// 	proxyUrl = nil
-	// }
+	if strings.Contains(path, "eth/mainnet") {
+		proxyUrl = nil
+	}
 
 	proxy.Transport = &http.Transport{
 		Proxy: http.ProxyURL(proxyUrl),
