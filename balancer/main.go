@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"sync"
 	"time"
+	"strings"
 )
 
 const (
@@ -114,9 +115,9 @@ func createProxy(path string) *Proxy {
 	// proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
 	proxyUrl, _ := url.Parse(proxyStr)
 
-	// if strings.Contains(path, "eth/mainnet") {
-	// 	proxyUrl = nil
-	// }
+	if strings.Contains(path, "eth/mainnet") {
+		proxyUrl = nil
+	}
 
 	proxy.Transport = &http.Transport{
 		Proxy: http.ProxyURL(proxyUrl),
@@ -180,7 +181,7 @@ var tokens []string
 var proxyMap = make(map[string]*Proxy)
 var reToken = regexp.MustCompile(`(\@token)`)
 
-func main() {
+func moralis() {
 	port := 3030
 
 	tokens = LinesInFile("tokens.txt")
@@ -192,8 +193,34 @@ func main() {
 		Handler: http.HandlerFunc(balance),
 	}
 
-	log.Printf("Balancer started at :%d\n", port)
 	if err := server.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
+
+	log.Printf("Balancer started at :%d\n", port)
+}
+
+func ethAlchemy() {
+	port := 3031
+	
+	tokens = LinesInFile("alchemy_keys.txt")
+
+	ethBalance := buildBalance("https://eth-mainnet.alchemyapi.io/v2")
+
+	ethServer := http.Server{
+		Addr:    fmt.Sprintf(":%d", 3031),
+		Handler: http.HandlerFunc(ethBalance),
+	}
+
+
+	if err := ethServer.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("Eth Balancer started at :%d\n", port)
+}
+
+func main() {
+	ethAlchemy()
+	moralis()
 }

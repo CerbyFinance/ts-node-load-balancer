@@ -5,6 +5,7 @@ services:
     image: go-balancer
     volumes:
        - ./tokens.txt:/root/tokens.txt
+       - ./alchemy_keys.txt:/root/alchemy_keys.txt
 
   infura-ropsten:
     image: nginx
@@ -25,12 +26,12 @@ services:
   # ----------
 
 
-  moralis-mainnet:
+  alchemy-mainnet:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=http://balancer:3030/@token/eth/mainnet
+      - HOST=http://balancer:3031/@token
 
 
   # alchemy-mainnet:
@@ -224,7 +225,7 @@ services:
       - infura-ropsten
       - infura-kovan
 
-      - moralis-mainnet
+      - alchemy-mainnet
       # - alchemy-mainnet
       # - infura-mainnet
 
