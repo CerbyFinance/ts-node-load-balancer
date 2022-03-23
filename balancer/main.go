@@ -91,11 +91,26 @@ func dialTLS(network, addr string) (net.Conn, error) {
 }
 
 var proxies []string = []string{
-	"http://RhbxQP:uEc4dA@104.238.190.248:10296",
-	"http://52qqy7:wX1MNS@85.195.81.143:10122",
-	"http://Uy8j3T:KJWZB2@45.145.57.228:11693",
-	"http://tUEGX8:bRXzV4@45.91.209.140:10484",
-	"http://dh3Ngq:q7BYyD@45.153.20.207:10487",
+	"pjjLYy:6dL0xr@199.247.15.159:12589",
+	"pjjLYy:6dL0xr@199.247.15.159:12588",
+	"pjjLYy:6dL0xr@199.247.15.159:12587",
+	"pjjLYy:6dL0xr@199.247.15.159:12586",
+	"pjjLYy:6dL0xr@199.247.15.159:12585",
+	"d6pKGA:ZtxmsY@45.91.209.146:11875",
+	"d6pKGA:ZtxmsY@45.91.209.146:11874",
+	"d6pKGA:ZtxmsY@45.91.209.146:11873",
+	"d6pKGA:ZtxmsY@45.91.209.146:11872",
+	"d6pKGA:ZtxmsY@45.91.209.146:11871",
+	"pzQSM8:xevSX9@85.195.81.144:11329",
+	"pzQSM8:xevSX9@85.195.81.144:11328",
+	"pzQSM8:xevSX9@85.195.81.144:11327",
+	"pzQSM8:xevSX9@85.195.81.144:11326",
+	"pzQSM8:xevSX9@85.195.81.149:11685",
+	"RhbxQP:uEc4dA@104.238.190.248:10296",
+	"52qqy7:wX1MNS@85.195.81.143:10122",
+	"Uy8j3T:KJWZB2@45.145.57.228:11693",
+	"tUEGX8:bRXzV4@45.91.209.140:10484",
+	"dh3Ngq:q7BYyD@45.153.20.207:10487"
 }
 
 func createProxy(path string) *Proxy {
