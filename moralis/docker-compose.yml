@@ -59,12 +59,19 @@ services:
       - HOST=http://balancer:3030/@token/avalanche/mainnet
 
 
-  rpc-avalanche:
+  # rpc-avalanche:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=https://api.avax.network/ext/bc/C/rpc
+
+  ankr-avalanche:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=https://api.avax.network/ext/bc/C/rpc
+      - HOST=https://rpc.ankr.com/avalanche
 
   # ----------
   dataseed-binance:
@@ -81,12 +88,20 @@ services:
   #   environment:
   #     - HOST=https://BSCRPC.com
 
-  moralis-binance:
+  # moralis-binance:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=http://balancer:3030/@token/bsc/mainnet
+
+
+  pub-binance:
     image: nginx
     volumes:
       - ./server.conf.template:/etc/nginx/templates/default.conf.template
     environment:
-      - HOST=http://balancer:3030/@token/bsc/mainnet
+      - HOST=https://bscrpc.com
 
   dataseed-binance-2:
     image: nginx
@@ -172,12 +187,12 @@ services:
 
   # ----------
 
-  moralis-polygon:
-    image: nginx
-    volumes:
-      - ./server.conf.template:/etc/nginx/templates/default.conf.template
-    environment:
-      - HOST=http://balancer:3030/@token/polygon/mainnet
+  # moralis-polygon:
+  #   image: nginx
+  #   volumes:
+  #     - ./server.conf.template:/etc/nginx/templates/default.conf.template
+  #   environment:
+  #     - HOST=http://balancer:3030/@token/polygon/mainnet
 
 
   rpc-polygon:
@@ -230,14 +245,17 @@ services:
       # - infura-mainnet
 
       # - bsc-rpc
+      - pub-binance
       - moralis-binance
       - dataseed-binance
       - dataseed-binance-2
       - dataseed-binance-3
 
       - rpc-fantom
+
       - rpc-avalanche
-      - moralis-avalanche
+      - ankr-avalanche
+      # - moralis-avalanche
 
 
       # - infstones-binance
@@ -252,11 +270,11 @@ services:
   
       - binance-testnet
 
-      - moralis-polygon
+      # - moralis-polygon
       - rpc-polygon
       # - alchemy-polygon
 
       - rpc-polygon-mumbai
-      - alchemy-polygon-mumbai
+      # - alchemy-polygon-mumbai
     deploy:
       replicas: 1
