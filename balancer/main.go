@@ -115,8 +115,14 @@ func createProxy(path string) *Proxy {
 	// proxyUrl, _ := url.Parse("http://vpsville:Pae9aile@45.139.185.34:" + strconv.Itoa(port))
 	proxyUrl, _ := url.Parse(proxyStr)
 
-	if strings.Contains(path, "eth/mainnet") {
+	var currentTokens []string
+
+	if strings.Contains(path, "eth-mainnet") {
 		proxyUrl = nil
+		currentTokens = ethTokens
+		log.Printf("No proxy")
+	} else {
+		currentTokens = tokens
 	}
 
 	proxy.Transport = &http.Transport{
@@ -144,7 +150,7 @@ func createProxy(path string) *Proxy {
 
 	return &Proxy{
 		ReverseProxy: proxy,
-		tokens:       NewTokens(tokens),
+		tokens:       NewTokens(currentTokens),
 	}
 }
 
@@ -178,6 +184,7 @@ func buildBalance(host string) func(w http.ResponseWriter, r *http.Request) {
 }
 
 var tokens []string
+var ethTokens []string
 var proxyMap = make(map[string]*Proxy)
 var reToken = regexp.MustCompile(`(\@token)`)
 
@@ -203,7 +210,7 @@ func moralis() {
 func ethAlchemy() {
 	port := 3031
 	
-	tokens = LinesInFile("alchemy_keys.txt")
+	ethTokens = LinesInFile("alchemy_keys.txt")
 
 	ethBalance := buildBalance("https://eth-mainnet.alchemyapi.io/v2")
 
