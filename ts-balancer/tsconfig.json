@@ -1,0 +1,17 @@
+{
+    "ts-node": {
+        "transpileOnly": false,
+        "files": true,
+        "compilerOptions": {
+            "resolveJsonModule": true
+        }
+    },
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "target": "esnext",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node"
+    },
+    "exclude": ["node_modules", "source"]
+}

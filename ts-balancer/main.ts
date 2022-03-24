@@ -1,6 +1,6 @@
-import * as express from "express";
+import express from "express";
 import axios, { AxiosRequestConfig } from "axios";
-import * as httpsProxyAgent from 'https-proxy-agent';
+import httpsProxyAgent from 'https-proxy-agent';
 
 const app = express();
 
