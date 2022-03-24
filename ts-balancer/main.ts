@@ -4,7 +4,7 @@ import httpsProxyAgent from 'https-proxy-agent';
 
 const app = express();
 
-const proxies = [
+const proxies: [string, AxiosRequestConfig['httpsAgent']][] = [
     "http://pjjLYy:6dL0xr@199.247.15.159:12588",
 	"http://pjjLYy:6dL0xr@199.247.15.159:12589",
 	"http://pjjLYy:6dL0xr@199.247.15.159:12587",
@@ -25,11 +25,16 @@ const proxies = [
 	"http://Uy8j3T:KJWZB2@45.145.57.228:11693",
 	"http://tUEGX8:bRXzV4@45.91.209.140:10484",
 	"http://dh3Ngq:q7BYyD@45.153.20.207:10487",
-];
+].map((proxy) => [proxy, proxyParser(proxy)]);
 
 
-function getRandomProxy(): string {
-    return proxies[Math.floor(Math.random() * proxies.length - 1)];
+let i = 0;
+
+function getRandomProxy(): [string, AxiosRequestConfig['httpsAgent']] {
+    if(i > proxies.length) {
+        i = 0;
+    }
+    return proxies[i++];
 }
 
 function proxyParser(proxy: string): AxiosRequestConfig['httpsAgent'] {
@@ -52,8 +57,8 @@ function userAgentGenerator(): string {
 export async function createRequest(url: string, req: express.Request<{}, any, any, Record<string, any>>): Promise<any> {
     let response;
     for(let i = 0; i < 5; i++) {
-        const proxyURL = getRandomProxy();
-        const proxy = proxyParser(proxyURL);
+        const [proxyURL, proxy] = getRandomProxy();
+        // const proxy = proxyParser(proxyURL);
         try {
             if(req.method == 'GET') {
                 response = (await axios.get(url, {

@@ -4,7 +4,6 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
-RUN npm run build
 RUN npm run tsc 
 
 CMD ["node", "main.js"]
