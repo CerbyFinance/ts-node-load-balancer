@@ -65,7 +65,7 @@ function intervalRegenProxy() {
 intervalRegenProxy()
 
 // Interval generate
-setInterval(intervalRegenProxy, 3600*1e3);
+setInterval(intervalRegenProxy, 600*1e3);
 
 
 
@@ -95,7 +95,7 @@ function userAgentGenerator(): string {
 
 function reportBug(proxyIndex: number, proxyUrl: string) {
     const proxy = proxies[proxyIndex];
-    if(proxy.proxyUrl == proxyUrl) {
+    if(proxy && proxy.proxyUrl == proxyUrl) {
         proxy.errors += 1;
         if(proxy.errors >= 15) {
             proxies[proxyIndex] = generateProxy();
@@ -170,11 +170,11 @@ app.all('/eth/mainnet', async (req, res) => {
 });
 
 app.all('/bsc/mainnet', async (req, res) => {
-    res.end(await createRequest("https://bscrpc.com/", req));
+    res.end(await createRequest("https://rpc.ankr.com/bsc", req));
 })
 
 app.all('/fantom/mainnet', async (req, res) => {
-    res.end(await createRequest("https://rpc.ftm.tools/", req));
+    res.end(await createRequest("https://rpc.ankr.com/fantom", req));
 })
 
 app.all('/avalanche/mainnet', async (req, res) => {
@@ -182,7 +182,7 @@ app.all('/avalanche/mainnet', async (req, res) => {
 })
 
 app.all('/polygon/mainnet', async (req, res) => {
-    res.end(await createRequest("https://polygon-rpc.com/", req));
+    res.end(await createRequest("https://rpc.ankr.com/polygon", req));
 })
 
 app.all('*', (req, res) => {
