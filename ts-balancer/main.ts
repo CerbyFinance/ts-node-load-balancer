@@ -152,7 +152,11 @@ export async function createRequest(url: string, req: express.Request<{}, any, a
 //     })
 // }
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
+    if(req.socket.remoteAddress != "::ffff:163.172.106.152") {
+        console.log(req.socket.remoteAddress, "rejected");
+        return;
+    }
     var data='';
     req.setEncoding('utf8');
     req.on('data', function(chunk) { 
